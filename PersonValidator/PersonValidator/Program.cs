@@ -6,8 +6,6 @@ namespace PersonValidator
     {
         static void Main(string[] args)
         {
-            IPersonRepositoryBasic l;
-            l.
         }
     }
 }
