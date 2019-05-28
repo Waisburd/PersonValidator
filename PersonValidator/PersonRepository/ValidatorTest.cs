@@ -21,13 +21,35 @@ namespace PersonRepository
             if (personRepository is IPersonRepositoryAdvanced)
             {
                 ValidateCapitalized(personRepository as IPersonRepositoryAdvanced);
-                ValidateGroup(personRepository as IPersonRepositoryAdvanced)
+                ValidateGroup(personRepository as IPersonRepositoryAdvanced);
+
+                if (personRepository is IValidatorExpert)
+                {
+                    ValidateRun(personRepository as IValidatorExpert);
+                }
             }
 
             Console.WriteLine("Todo ok!!!!");
 
         }
 
+        private void ValidateRun(IValidatorExpert personRepository)
+        {
+            Console.WriteLine("Validando Run...");
+            
+            if (personRepository.Run(new Person()
+            {
+                Id = 1,
+                Name = "ariel",
+                Age = 22,
+                Email = "ariel1@ariel.com",
+            }, p => p.Name == "Krako" && p.Age == 22))
+            {
+                throw new Exception("No se corrio la validacion correctamente");
+            }
+
+            Console.WriteLine("Run ok");
+        }
 
         private void ValidateGroup(IPersonRepositoryAdvanced personRepository)
         {

@@ -6,6 +6,6 @@ namespace PersonRepository.Interfaces
 { 
     public interface IValidatorExpert : IPersonRepositoryAdvanced
     {
-        bool Run(Expression<Func<Person, bool>> validation);
+        bool Run(Person person, Expression<Func<Person, bool>> validation);
     }
 }
