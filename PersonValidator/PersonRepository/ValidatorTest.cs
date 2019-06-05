@@ -97,7 +97,7 @@ namespace PersonRepository
 
             var res = personRepository.GroupEmailByNameCount();
 
-            if (res[1].Count() != 1 || res[2].Count() != 2 || res[3].Count() != 3 || res[3].Any(e => e == "ariel5@ariel.com"))
+            if (res[1].Count() != 1 || res[2].Count() != 2 || res[3].Count() != 2 || !res[3].Any(e => e == "ariel5@ariel.com"))
             {
                 throw new Exception("No se obtuvo la agrupacion");
             }
@@ -150,10 +150,10 @@ namespace PersonRepository
             };
 
 
-            if (personRepository.GetNotCapitalizedIds().Count() != 3 ||
-                personRepository.GetNotCapitalizedIds().Any(i => i == 1) ||
-                personRepository.GetNotCapitalizedIds().Any(i => i == 2) ||
-                personRepository.GetNotCapitalizedIds().Any(i => i == 5))
+            if (personRepository.GetNotCapitalizedIds().Count() != 3 && 
+                !(personRepository.GetNotCapitalizedIds().Contains(1) &&
+                personRepository.GetNotCapitalizedIds().Contains(2) &&
+                personRepository.GetNotCapitalizedIds().Contains(5)))
             {
                 throw new Exception("No se obtuvo la lista de nombres no capitalizados");
             }

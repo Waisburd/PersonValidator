@@ -1,4 +1,7 @@
 ﻿using PersonRepository.Interfaces;
+using PersonRepository.Entities;
+using System;
+using PersonRepository;
 
 namespace PersonValidator
 {
@@ -6,6 +9,10 @@ namespace PersonValidator
     {
         static void Main(string[] args)
         {
+            var waisburd = new Waisburd();
+
+            var test = new ValidatorTest();
+            test.Validate(waisburd);
         }
     }
 }
